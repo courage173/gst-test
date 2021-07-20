@@ -38,13 +38,19 @@ const Home = () => {
         <div className={styles.container}>
             <div className={styles.searchBox}>
                 <div className={styles.title}>
-                    <h1>Search Countries</h1>
+                    <h1>Search for Countries around the World</h1>
                 </div>
-                <Form
-                    id={'search'}
-                    formdata={state.formdata.search}
-                    change={element => updateForm(element)}
-                />
+                <div className={styles.formWrap}>
+                    <Form
+                        id={'search'}
+                        formdata={state.formdata.search}
+                        change={element => updateForm(element)}
+                        styles={{ width: '100%' }}
+                    />
+                    <div>
+                        <button className={styles.button}>Search</button>
+                    </div>
+                </div>
             </div>
         </div>
     );

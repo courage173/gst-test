@@ -31,7 +31,13 @@ function FormField({
         switch (formdata.element) {
             case 'input':
                 template = (
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            width: '100%',
+                        }}
+                    >
                         {formdata.showlabel && (
                             <div className={formStyles.label}>
                                 <p>{formdata.config.label}</p>
