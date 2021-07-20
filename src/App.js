@@ -1,11 +1,8 @@
 import React from 'react';
+import Home from './components/Home';
 
 function App() {
-    return (
-        <div>
-            <p>Hello World</p>
-        </div>
-    );
+    return <Home />;
 }
 
 App.displayName = 'App';
