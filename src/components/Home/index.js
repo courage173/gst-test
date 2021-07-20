@@ -4,8 +4,10 @@ import Form from '../../utils/form/Form';
 import styles from './Home.module.css';
 import { update, generateData, isFormValid } from '../../utils/form/formAction';
 import MapWithAMarkerClusterer from '../../utils/Map';
+import BarCharts from '../../utils/BarCharts';
 
 const Home = () => {
+    const [active, setActive] = useState('bar');
     const [state, setState] = useState({
         formdata: {
             search: {
@@ -52,6 +54,36 @@ const Home = () => {
                         <button className={styles.button}>Search</button>
                     </div>
                 </div>
+            </div>
+            <div className={styles.chartContainer}>
+                <h4 style={{ marginBottom: 0 }}>Populations</h4>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginBottom: 5,
+                    }}
+                >
+                    <div
+                        className={styles.toggleBtn}
+                        style={{
+                            backgroundColor: active === 'bar' && '#E5E5E5',
+                        }}
+                        onClick={() => setActive('bar')}
+                    >
+                        Bar chart
+                    </div>
+                    <div
+                        className={styles.toggleBtn}
+                        style={{
+                            backgroundColor: active === 'line' && '#E5E5E5',
+                        }}
+                        onClick={() => setActive('line')}
+                    >
+                        Pie chart
+                    </div>
+                </div>
+                <BarCharts type={active} />
             </div>
             <div className={styles.mapContainer}>
                 <MapWithAMarkerClusterer />
