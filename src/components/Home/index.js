@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Form from '../../utils/form/Form';
 import styles from './Home.module.css';
 import { update, generateData, isFormValid } from '../../utils/form/formAction';
+import MapWithAMarkerClusterer from '../../utils/Map';
 
 const Home = () => {
     const [state, setState] = useState({
@@ -51,6 +52,9 @@ const Home = () => {
                         <button className={styles.button}>Search</button>
                     </div>
                 </div>
+            </div>
+            <div className={styles.mapContainer}>
+                <MapWithAMarkerClusterer />
             </div>
         </div>
     );

@@ -40,3 +40,8 @@
     height: 2.5rem;
     border: none;
 }
+.mapContainer {
+    height: 20rem;
+    width: 50rem;
+    margin-top: 20rem;
+}
