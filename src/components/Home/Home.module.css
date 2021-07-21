@@ -52,7 +52,7 @@
 .chartContainer {
     width: 500px;
     height: 20rem;
-    background-color: rgba(255, 255, 255, 1);
+
     z-index: 20;
     position: fixed;
     left: 0;

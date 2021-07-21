@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Chart from 'react-google-charts';
+import styles from './char.module.css';
 
 export default function Charts({ type }) {
     return (
@@ -19,9 +20,11 @@ export default function Charts({ type }) {
                 ['Watch TV', 2],
                 ['Sleep', 7],
             ]}
+            className={styles.chartWrap}
             options={{
                 title: '',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                backgroundColor: 'transparent',
+
                 //chartArea: { width: '50%' },
                 // hAxis: {
                 //     title: 'Total Population',

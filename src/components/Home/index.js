@@ -56,18 +56,27 @@ const Home = () => {
                 </div>
             </div>
             <div className={styles.chartContainer}>
-                <h4 style={{ marginBottom: 0 }}>Populations</h4>
+                <div
+                    style={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.7) ',
+                    }}
+                >
+                    <h4 style={{ marginBottom: 0, padding: 5 }}>Populations</h4>
+                </div>
                 <div
                     style={{
                         display: 'flex',
                         justifyContent: 'center',
-                        marginBottom: 5,
+                        backgroundColor: 'rgba(255, 255, 255, 0.7) ',
                     }}
                 >
                     <div
                         className={styles.toggleBtn}
                         style={{
-                            backgroundColor: active === 'bar' && '#E5E5E5',
+                            backgroundColor:
+                                active === 'bar' && 'rgb(80 223 199)',
+                            color: active === 'bar' && '#fff',
+                            borderRight: 0,
                         }}
                         onClick={() => setActive('bar')}
                     >
@@ -76,7 +85,9 @@ const Home = () => {
                     <div
                         className={styles.toggleBtn}
                         style={{
-                            backgroundColor: active === 'line' && '#E5E5E5',
+                            backgroundColor:
+                                active === 'line' && 'rgb(80 223 199)',
+                            color: active === 'line' && '#fff',
                         }}
                         onClick={() => setActive('line')}
                     >
