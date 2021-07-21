@@ -1,5 +1,5 @@
 .container {
-    height: 100vh;
+    height: 130vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,8 +40,30 @@
     height: 2.5rem;
     border: none;
 }
+.dataWrap {
+    margin-top: 2rem;
+    display: flex;
+}
 .mapContainer {
+    height: 35rem;
+    width: 60rem;
+    margin-top: 2rem;
+}
+.chartContainer {
+    width: 500px;
     height: 20rem;
-    width: 50rem;
-    margin-top: 20rem;
+
+    z-index: 20;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    color: #797979;
+    padding-bottom: 15px;
+}
+.toggleBtn {
+    border: 1px solid #707070;
+    font-size: 10px;
+    padding: 5px;
+    cursor: pointer;
 }

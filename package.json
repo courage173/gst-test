@@ -8,11 +8,15 @@
     "@testing-library/user-event": "^13.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-google-charts": "^3.0.15",
     "react-google-maps": "^9.4.5",
+    "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
+    "recharts": "^2.0.10",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
     "web-vitals": "^2.1.0"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -47,28 +51,28 @@
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
     "prettier": "^2.3.2"
-},
-"eslintConfig": {
+  },
+  "eslintConfig": {
     "extends": [
-        "plugin:prettier/recommended"
+      "plugin:prettier/recommended"
     ],
     "rules": {
-        "no-console": "warn"
+      "no-console": "warn"
     }
-},
-"husky": {
+  },
+  "husky": {
     "hooks": {
-        "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged"
     }
-},
-"lint-staged": {
+  },
+  "lint-staged": {
     "./**/*.{json,yml,yaml,md}": [
-        "prettier --write",
-        "git add"
+      "prettier --write",
+      "git add"
     ],
     "./**/*.{js}": [
-        "eslint --fix",
-        "git add"
+      "eslint --fix",
+      "git add"
     ]
-}
+  }
 }
