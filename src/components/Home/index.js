@@ -1,15 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import Form from '../../utils/form/Form';
 import styles from './Home.module.css';
 import { update, generateData, isFormValid } from '../../utils/form/formAction';
-import MapWithAMarkerClusterer from '../../utils/Map';
 import BarCharts from '../../utils/BarCharts';
 import { getCountries } from '../../redux/actions/countries';
-import Loader from '../../utils/loader/Loader';
+import { Loader } from '../../utils/loader/Loader';
+
+const Map = React.lazy(() => import('../../utils/Map'));
 
 const Home = props => {
     const [active, setActive] = useState('bar');
@@ -62,6 +63,7 @@ const Home = props => {
     const chatData = countries.map(country => {
         return [country.name, country.population];
     });
+
     return (
         <div className={styles.container}>
             <div className={styles.searchBox}>
@@ -128,7 +130,9 @@ const Home = props => {
             </div>
             <div className={styles.mapContainer}>
                 {!props.requesting ? (
-                    <MapWithAMarkerClusterer markers={mapData} />
+                    <Suspense fallback={<Loader />}>
+                        <Map markers={mapData} />
+                    </Suspense>
                 ) : null}
             </div>
         </div>
