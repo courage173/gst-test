@@ -1,5 +1,5 @@
 .container {
-    height: 130vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,7 @@
 }
 .formWrap {
     display: flex;
-    width: 95%;
+    width: 30rem;
     align-items: center;
     background-color: #fff;
     box-shadow: 0 1px 6px 0 rgb(0 0 0 / 12%), 0 1px 6px 0 rgb(0 0 0 / 12%);
@@ -55,7 +55,7 @@
     margin-top: 2rem;
 }
 .chartContainer {
-    width: 500px;
+    width: 300px;
     height: 20rem;
 
     z-index: 20;
@@ -64,7 +64,7 @@
     bottom: 0;
     text-align: center;
     color: #797979;
-    padding-bottom: 15px;
+    padding-bottom: 26px;
 }
 .toggleBtn {
     border: 1px solid #707070;
@@ -78,4 +78,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+@media only screen and (max-width: 768px) {
+    .container {
+        display: block;
+        min-height: 100vh;
+    }
+    .mapContainer {
+        width: 100%;
+        height: 20rem;
+    }
+    .searchBox {
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .formWrap {
+        width: 20rem;
+    }
+    .chartContainer {
+        width: 100%;
+        position: unset;
+        background-color: #fff;
+    }
 }
