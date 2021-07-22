@@ -24,4 +24,4 @@ npm start
 
 Builds the application for production to the `build` folder
 
-A live version of the app exist at `[https://world-search.netlify.app]`
+A live version of the app exist at [https://world-search.netlify.app]
