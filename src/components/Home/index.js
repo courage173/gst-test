@@ -7,11 +7,13 @@ import PropTypes from 'prop-types';
 import Form from '../../utils/form/Form';
 import styles from './Home.module.css';
 import { update, generateData } from '../../utils/form/formAction';
-import BarCharts from '../../utils/BarCharts';
 import { getCountries } from '../../redux/actions/countries';
 import { Loader } from '../../utils/loader/Loader';
 
+//lazy load map component
 const Map = React.lazy(() => import('../../utils/Map'));
+//lazy load chart component
+const BarCharts = React.lazy(() => import('../../utils/BarCharts'));
 
 const Home = props => {
     const [active, setActive] = useState('bar');
@@ -171,7 +173,10 @@ const Home = props => {
                                         Pie chart
                                     </div>
                                 </div>
-                                <BarCharts type={active} data={chartData} />
+
+                                <Suspense fallback={<Loader />}>
+                                    <BarCharts type={active} data={chartData} />
+                                </Suspense>
                             </>
                         )}
                     </div>
