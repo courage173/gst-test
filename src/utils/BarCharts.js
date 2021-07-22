@@ -17,15 +17,7 @@ export default function Charts({ type, data }) {
             options={{
                 title: '',
                 backgroundColor: 'transparent',
-
-                //chartArea: { width: '50%' },
-                // hAxis: {
-                //     title: 'Total Population',
-                //     minValue: 0,
-                // },
-                // vAxis: {
-                //     title: 'City',
-                // },
+                pieSliceText: 'value',
             }}
         />
     );

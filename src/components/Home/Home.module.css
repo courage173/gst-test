@@ -72,3 +72,10 @@
     padding: 5px;
     cursor: pointer;
 }
+.singleWrap {
+    background-color: rgba(255, 255, 255, 0.7);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

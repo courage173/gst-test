@@ -52,6 +52,7 @@ const Home = props => {
             await props.getCountries(data.search);
         }
     };
+    //build map data
     const mapData = countries.map((country, i) => {
         return {
             id: i,
@@ -60,7 +61,8 @@ const Home = props => {
             longitude: country.latlng[1],
         };
     });
-    const chatData = countries.map(country => {
+    //build data needed by chart
+    const chartData = countries.map(country => {
         return [country.name, country.population];
     });
 
@@ -87,47 +89,80 @@ const Home = props => {
                     </div>
                 </div>
             </div>
-            <div className={styles.chartContainer}>
-                <div
-                    style={{
-                        backgroundColor: 'rgba(255, 255, 255, 0.7) ',
-                    }}
-                >
-                    <h4 style={{ marginBottom: 0, padding: 5 }}>Populations</h4>
-                </div>
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        backgroundColor: 'rgba(255, 255, 255, 0.7) ',
-                    }}
-                >
+            {chartData.length > 0 && (
+                <div className={styles.chartContainer}>
                     <div
-                        className={styles.toggleBtn}
                         style={{
-                            backgroundColor:
-                                active === 'bar' && 'rgb(80 223 199)',
-                            color: active === 'bar' && '#fff',
-                            borderRight: 0,
+                            backgroundColor: 'rgba(255, 255, 255, 0.7)',
                         }}
-                        onClick={() => setActive('bar')}
                     >
-                        Bar chart
+                        <h4
+                            style={{
+                                marginBottom: 0,
+                                padding: 5,
+                                fontSize: 18,
+                            }}
+                        >
+                            Populations
+                        </h4>
                     </div>
-                    <div
-                        className={styles.toggleBtn}
-                        style={{
-                            backgroundColor:
-                                active === 'line' && 'rgb(80 223 199)',
-                            color: active === 'line' && '#fff',
-                        }}
-                        onClick={() => setActive('line')}
-                    >
-                        Pie chart
-                    </div>
+                    {chartData.length === 1 ? (
+                        <div className={styles.singleWrap}>
+                            <h5
+                                style={{
+                                    marginTop: 0,
+
+                                    fontSize: 18,
+                                }}
+                            >
+                                {chartData[0][0]} has a Population of{' '}
+                                <span style={{ color: 'rgb(80, 223, 199)' }}>
+                                    {chartData[0][1]}
+                                </span>
+                            </h5>
+                            {` `}
+                        </div>
+                    ) : (
+                        <>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    backgroundColor:
+                                        'rgba(255, 255, 255, 0.7) ',
+                                }}
+                            >
+                                <div
+                                    className={styles.toggleBtn}
+                                    style={{
+                                        backgroundColor:
+                                            active === 'bar' &&
+                                            'rgb(80 223 199)',
+                                        color: active === 'bar' && '#fff',
+                                        borderRight: 0,
+                                    }}
+                                    onClick={() => setActive('bar')}
+                                >
+                                    Bar chart
+                                </div>
+                                <div
+                                    className={styles.toggleBtn}
+                                    style={{
+                                        backgroundColor:
+                                            active === 'line' &&
+                                            'rgb(80 223 199)',
+                                        color: active === 'line' && '#fff',
+                                    }}
+                                    onClick={() => setActive('line')}
+                                >
+                                    Pie chart
+                                </div>
+                            </div>
+                            <BarCharts type={active} data={chartData} />
+                        </>
+                    )}
                 </div>
-                <BarCharts type={active} data={chatData} />
-            </div>
+            )}
             <div className={styles.mapContainer}>
                 {!props.requesting ? (
                     <Suspense fallback={<Loader />}>
