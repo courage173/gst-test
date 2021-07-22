@@ -6,7 +6,7 @@ import Slide from 'react-reveal/Slide';
 import PropTypes from 'prop-types';
 import Form from '../../utils/form/Form';
 import styles from './Home.module.css';
-import { update, generateData, isFormValid } from '../../utils/form/formAction';
+import { update, generateData } from '../../utils/form/formAction';
 import BarCharts from '../../utils/BarCharts';
 import { getCountries } from '../../redux/actions/countries';
 import { Loader } from '../../utils/loader/Loader';
@@ -49,6 +49,7 @@ const Home = props => {
 
     const handleSearch = async () => {
         const data = generateData(state.formdata);
+        //check if user input is empty
         if (data.search.length > 0) {
             await props.getCountries(data.search);
         }
