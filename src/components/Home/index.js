@@ -2,6 +2,7 @@
 import React, { useState, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Slide from 'react-reveal/Slide';
 import PropTypes from 'prop-types';
 import Form from '../../utils/form/Form';
 import styles from './Home.module.css';
@@ -70,7 +71,7 @@ const Home = props => {
         <div className={styles.container}>
             <div className={styles.searchBox}>
                 <div className={styles.title}>
-                    <h1>Search for Countries around the World</h1>
+                    <h1>Search Countries</h1>
                 </div>
                 <div className={styles.formWrap}>
                     <Form
@@ -89,80 +90,7 @@ const Home = props => {
                     </div>
                 </div>
             </div>
-            {chartData.length > 0 && (
-                <div className={styles.chartContainer}>
-                    <div
-                        style={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                        }}
-                    >
-                        <h4
-                            style={{
-                                marginBottom: 0,
-                                padding: 5,
-                                fontSize: 18,
-                            }}
-                        >
-                            Populations
-                        </h4>
-                    </div>
-                    {chartData.length === 1 ? (
-                        <div className={styles.singleWrap}>
-                            <h5
-                                style={{
-                                    marginTop: 0,
 
-                                    fontSize: 18,
-                                }}
-                            >
-                                {chartData[0][0]} has a Population of{' '}
-                                <span style={{ color: 'rgb(80, 223, 199)' }}>
-                                    {chartData[0][1]}
-                                </span>
-                            </h5>
-                            {` `}
-                        </div>
-                    ) : (
-                        <>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    backgroundColor:
-                                        'rgba(255, 255, 255, 0.7) ',
-                                }}
-                            >
-                                <div
-                                    className={styles.toggleBtn}
-                                    style={{
-                                        backgroundColor:
-                                            active === 'bar' &&
-                                            'rgb(80 223 199)',
-                                        color: active === 'bar' && '#fff',
-                                        borderRight: 0,
-                                    }}
-                                    onClick={() => setActive('bar')}
-                                >
-                                    Bar chart
-                                </div>
-                                <div
-                                    className={styles.toggleBtn}
-                                    style={{
-                                        backgroundColor:
-                                            active === 'line' &&
-                                            'rgb(80 223 199)',
-                                        color: active === 'line' && '#fff',
-                                    }}
-                                    onClick={() => setActive('line')}
-                                >
-                                    Pie chart
-                                </div>
-                            </div>
-                            <BarCharts type={active} data={chartData} />
-                        </>
-                    )}
-                </div>
-            )}
             <div className={styles.mapContainer}>
                 {!props.requesting ? (
                     <Suspense fallback={<Loader />}>
@@ -170,6 +98,84 @@ const Home = props => {
                     </Suspense>
                 ) : null}
             </div>
+            {!props.requesting && chartData.length > 0 && (
+                <Slide left>
+                    <div className={styles.chartContainer}>
+                        <div
+                            style={{
+                                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                            }}
+                        >
+                            <h4
+                                style={{
+                                    marginBottom: 0,
+                                    padding: 5,
+                                    fontSize: 18,
+                                }}
+                            >
+                                Populations
+                            </h4>
+                        </div>
+                        {chartData.length === 1 ? (
+                            <div className={styles.singleWrap}>
+                                <h5
+                                    style={{
+                                        marginTop: 0,
+
+                                        fontSize: 18,
+                                    }}
+                                >
+                                    {chartData[0][0]} has a Population of{' '}
+                                    <span
+                                        style={{ color: 'rgb(80, 223, 199)' }}
+                                    >
+                                        {chartData[0][1]}
+                                    </span>
+                                </h5>
+                                {` `}
+                            </div>
+                        ) : (
+                            <>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        backgroundColor:
+                                            'rgba(255, 255, 255, 0.7) ',
+                                    }}
+                                >
+                                    <div
+                                        className={styles.toggleBtn}
+                                        style={{
+                                            backgroundColor:
+                                                active === 'bar' &&
+                                                'rgb(80 223 199)',
+                                            color: active === 'bar' && '#fff',
+                                            borderRight: 0,
+                                        }}
+                                        onClick={() => setActive('bar')}
+                                    >
+                                        Bar chart
+                                    </div>
+                                    <div
+                                        className={styles.toggleBtn}
+                                        style={{
+                                            backgroundColor:
+                                                active === 'line' &&
+                                                'rgb(80 223 199)',
+                                            color: active === 'line' && '#fff',
+                                        }}
+                                        onClick={() => setActive('line')}
+                                    >
+                                        Pie chart
+                                    </div>
+                                </div>
+                                <BarCharts type={active} data={chartData} />
+                            </>
+                        )}
+                    </div>
+                </Slide>
+            )}
         </div>
     );
 };

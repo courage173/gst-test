@@ -8,7 +8,7 @@ export default function Charts({ type, data }) {
     return (
         <Chart
             backgroundColor={'rgba(255, 255, 255, 0.7)'}
-            width={'500px'}
+            width={'300px'}
             height={'300px'}
             chartType={type === 'bar' ? 'BarChart' : 'PieChart'}
             loader={<div>Loading Chart</div>}
